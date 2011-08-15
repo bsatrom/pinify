@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>jQuery.ie9ify</id>
+    <version>1.0</version>
+    <authors>Brandon Satrom, Clark Sell</authors>
+    <description>A jQuery Plugin for adding IE9 Features (pinned sites, overlay icons, notifications, etc.) to your applications.</description>
+	<summary>See ie9ify.codeplex.com for an introduction video and full doccumentation.</summary>
+	<language>en-us</language>
+	<iconUrl>http://nuget.org/Media/Default/Packages/jQuery.ie9ify/1.0/ie9ifySmall.png</iconUrl>
+	<projectUrl>http://ie9ify.codeplex.com/</projectUrl>
+    <licenseUrl>http://ie9ify.codeplex.com/license</licenseUrl>
+	<tags>jquery IE9 plugins browser pinned sites ASPNETWEBPAGES</tags>
+    <dependencies>
+      <dependency id="jQuery" version="1.5.2" />      
+    </dependencies> 
+  </metadata>
+</package>

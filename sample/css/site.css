@@ -1,0 +1,23 @@
+﻿#slideshow {
+    font-size: 5em; 
+    font-weight: bold;
+    display: block;
+    position: absolute;
+    float: left;
+    margin: 50px 0 0 200px;
+}
+
+input[type='button'] {
+  color: grey;
+  font: bold 84% 'trebuchet ms',helvetica,sans-serif;
+  font-size: 1.3em;
+  background-color:#c5e4fe;
+  border: 1px solid;
+  border-color: grey;  
+}
+
+input[type='button']:hover { 
+    border-color: Grey;
+    border-width: 3px 3px 3px 3px;
+}
+

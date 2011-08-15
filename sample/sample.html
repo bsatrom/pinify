@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<html lang=en>
+  <head>
+    <title>pinify - the IE9 jQuery Plugin</title>
+    <meta charset=utf-8 />
+    <link rel="stylesheet" href="css/jquery.pinify.css" />    
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+  <body>
+    <div id="hangingChadContainer"></div>
+    <div id="topHatContainer"></div>
+    <div id="brandedTopHatContainer"></div>
+    <div id="doubleTopHatContainer"></div>
+    
+    <div id="slideshow"></div>
+    <div id="body">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <p>
+            <a href="#">Click me to add this site to the start menu</a><br />
+        </p>
+        <p><img src="images/Mic.jpg" class="mainimage"/>
+            </p>
+        <br/>
+        <input type="button" id="addHangingChadTeaser" value="Add Hanging Chad Teaser" />
+        <br/>
+        <input type="button" id="addTopHatTeaser" value="Add TopHat Teaser" />
+        <br/>
+        <input type="button" id="addBrandedTopHatTeaser" value="Add Branded TopHat Teaser" />
+        <br/>
+        <input type="button" id="addDoubleTopHatTeaser" value="Add Double TopHat Teaser" />
+        <br/><br/>
+        <p>
+            <p><input type="button" id="addOverlay" value="Add Overlay" />
+            </p>
+            <p>
+            <input type="button" id="clearOverlay" value="ClearOverlay" />    
+            </p>
+            <input type="button" id="flash" value="Flash Taskbar" />
+            </p>
+            <p>
+            <input type="button" id="jumpList" value="Add Jumplist" />
+            </p>
+            <p>
+            <input type="button" id="clearJumpList" value="Clear JumpList" />
+            </p>
+        </p>
+    </div>
+    
+    <script src="js/jquery-1.6.min.js" type="text/javascript"></script>  
+    <!--<script src="js/jquery.pinify.min.js" type="text/javascript"></script>-->
+    <script src="js/jquery.pinify.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">  
+        $(function() {  
+            $('.pinify-topHat-closePin').click(function() {
+                $('.pinify-topHat-container').slideUp('slow');
+                $(this).slideUp('slow');                
+            });
+            
+            $('head').pinify({
+                navColor: 'Silver',
+                startUrl: 'sample.html',
+                tasks: [
+                    {
+                        'name': 'Twitter',
+                        'action': 'http://twitter.com/brandonsatrom',
+                        'icon': 'http://twitter.com/favicon.ico'
+                    },
+                    {
+                        'name': 'User InExperience',
+                        'action': 'http://www.userinexperience.com',
+                        'icon': 'http://www.userinexperience.com/favicon.ico'
+                    }
+                ]
+            });
+                            
+            $('img').pinify('enablePinning');                
+            
+            $('a').pinify('enableSiteMode');
+            
+            $('#addHangingChadTeaser').click(function() {
+                $('#hangingChadContainer').pinify('pinTeaser', {
+                    mainContentSelector: '#body',
+                    sticky: true,
+                    timeout: 10000
+                });
+            });
+            
+            $('#addTopHatTeaser').click(function() {
+                $('#topHatContainer').pinify('pinTeaser', {
+                    type: 'topHat',
+                    pinText: 'Unlock the hidden powers of this site with a click and a drag.',
+                    style: {
+                        backgroundImage: 'images/toolbar-bg.png',
+                        closeButtonImage: 'images/toolbar-bg.png'
+                    }
+                });
+            });
+            
+            $('#addBrandedTopHatTeaser').click(function() {
+                $('#brandedTopHatContainer').pinify('pinTeaser', {
+                    type: 'brandedTopHat',
+                    pinText: 'Unlock the hidden powers of this site with a click and a drag.',
+                    secondaryText: 'Drag the icon to your taskbar.',
+                    style: {
+                        backgroundImage: 'images/branding_bar_custom_bg.png',
+                        closeButtonImage: 'images/toolbar-bg.png'
+                    }
+                });
+            });
+            
+            $('#addDoubleTopHatTeaser').click(function() {
+                $('#doubleTopHatContainer').pinify('pinTeaser', {
+                    type: 'doubleTopHat',
+                    pinText: 'Unlock the hidden powers of this site with a click and a drag.',
+                    style: {
+                        rightBackgroundImage: 'images/left_image.png',
+                        leftBackgroundImage: 'images/right_image.png'
+                    }
+                });
+            });
+            
+            if ($.pinify.isPinned()) {                
+                
+                $('#addOverlay').bind('click', function() {
+                    $.pinify.addOverlay({
+                        title: 'Woot!',
+                        icon: 'images/blue.ico'
+                    });
+                });
+                
+                $('#clearOverlay').bind('click', function() {
+                    $.pinify.clearOverlay();
+                });
+                
+                $('#jumpList').bind('click', function() {
+                    $.pinify.addJumpList({
+                        title: 'Test List',
+                        items: [
+                            {
+                                'name': 'CNN',
+                                'url': 'http://www.cnn.com',
+                                'icon': 'http://www.cnn.com/favicon.ico'
+                            },
+                            {
+                                'name': 'bit.ly',
+                                'url': 'http://bit.ly',
+                                'icon': 'http://www.bit.ly/favicon.ico'
+                            }
+                        ]
+                    });
+                });     
+                
+                $('#clearJumplist').bind('click', function() {
+                    S.pinify.clearJumpList();
+                });
+                
+                $('#flash').click(function() {
+                    setTimeout(function() {
+                        $.pinify.flashTaskbar();
+                    },5000);
+                });                
+                    
+                $.pinify.createThumbbarButtons({
+                    buttons: [{
+                        icon: 'images/prev.ico',
+                        name: 'Previous Image',
+                        click: function () {
+                            $('#slideshow').hide().text('Previous...').fadeIn('slow');
+                        }
+                    },
+                    {
+                        icon: 'images/play.ico',
+                        name: 'Play Slideshow',
+                        click: function () {
+                            var slideshow = $('#slideshow');
+                            var text = 'Playing...';
+    
+                            if (slideshow.data('state') == 'paused') {
+                                slideshow.data('state', 'playing');
+                            } else {
+                                text = 'Pausing...';
+                                slideshow.data('state', 'paused');
+                            }
+    
+                            slideshow.hide().text(text).fadeIn('slow');
+                        },
+                        alternateStyle: {
+                            icon: 'images/pause.ico',
+                            name: 'Pause Slideshow'
+                        }
+                    },
+                    {
+                        icon: 'images/next.ico',
+                        name: 'Next Image',
+                        click: function () {
+                            $('#slideshow').hide().text('Next...').fadeIn('slow');
+                        }
+                    }]
+                });
+            }
+        });              
+  </script>
+  </body>
+</html>

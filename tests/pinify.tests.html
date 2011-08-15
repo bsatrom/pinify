@@ -1,0 +1,251 @@
+<!-- PLEASE NOTE: pinify contains functionality specifics to IE9 and, as such these Tests are meant to be run in that version of the browser -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pinify Tests</title>
+        <link rel="stylesheet" href="css/qunit.css" />
+        <link rel="stylesheet" href="css/jquery.pinify.css" /> 
+        <script src="js/windowMocks.js"></script>
+    </head>
+    <body>        
+        <h1 id="qunit-header">pinify Tests</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">pin
+            <div id="header"></div>
+            <img id="pinImg" />
+            <div id="pinDiv"></div>
+            <a id="siteModeLink" href="#">Click it here!</a>
+        </div>    
+        
+        <script src="js/jquery-1.6.min.js"></script>
+        <script src="js/jquery.pinify.js"></script>
+        <!--<script src="js/jquery.pinify.min.js"></script>-->    
+        <script src="js/qunit.js"></script>        
+        <script>
+        $(function() {
+            // Setup and teardown
+            module('', {
+                teardown: function() {
+                    windowMocks.resetWindow();
+                    
+                    $('head > meta').remove();
+                    $('link[type^=image]').remove();
+                    $('#header').remove();
+                }
+            });
+        
+            //init tests
+            test('init() with defaults should create meta tags in <head>', function() {
+                $('head').pinify();
+                                
+                ok($('head > meta[name=msapplication-starturl]').length == 1, 'msapplication-starturl meta tag');                
+                ok($('head > meta[name=msapplication-window]').length == 1, 'msapplication-window meta tag');
+                ok($('head > meta[name=application-name]').length == 1, 'application-name meta tag');
+                ok($('head > meta[name=msapplication-tooltip]').length == 1, 'msapplication-tooltip meta tag');
+                ok($('head > meta[name=msapplication-navbutton-color]').length == 0, 'msapplication-navbutton-color meta tag');
+                ok($('link[type^=image]').length == 1, 'favicon header tag');
+            });
+            
+            test('init() with defaults should set default meta tag values in <head>', function() {
+                $('head').pinify();
+                                
+                equal($('head > meta[name=msapplication-starturl]').attr('content'), 'http://' + location.host, 'msapplication-starturl should be the current page');                
+                equal($('head > meta[name=msapplication-window]').attr('content'), 'width=800;height=600', 'msapplication-window should default to 800x600');
+                equal($('head > meta[name=application-name]').attr('content'), document.title.toString(), 'application-name meta tag should equal current document title');
+                equal($('head > meta[name=msapplication-tooltip]').attr('content'), document.title.toString(), 'msapplication-tooltip meta tag should equal current document title');                
+            });
+                        
+            test('init() with defaults should strip the current file path from the link meta tag', function() {
+                $('head').pinify();
+            
+                equals($('link[type^=image]').attr('href'), 'http://' + location.host + '/favicon.ico');
+            });
+            
+            test('init() with values should set those values in meta tags', function() {
+                var appName = 'My Test App',
+                    icon = 'othericon.ico',
+                    color = 'Battleship Grey',
+                    start = '/Gallery',
+                    ttip = 'Welcome to my awesome site',
+                    win = 'width=600;height=480';
+                
+                $('head').pinify({
+                    applicationName: appName,
+                    favIcon: icon,
+                    navColor: color,
+                    startUrl: start,
+                    tooltip: ttip,
+                    window: win
+                });
+                
+                equal($('head > meta[name=msapplication-starturl]').attr('content'), start, 'msapplication-starturl should match the provided value');                
+                equal($('head > meta[name=msapplication-window]').attr('content'), win, 'msapplication-window should match the provided value');
+                equal($('head > meta[name=application-name]').attr('content'), appName, 'application-name meta tag should match the provided value');
+                equal($('head > meta[name=msapplication-tooltip]').attr('content'), ttip, 'msapplication-tooltip meta tag should match the provided value');                
+                equal($('head > meta[name=msapplication-navbutton-color]').attr('content'), color, 'msapplication-navbutton-color meta tag should match the provided value');
+                equal($('link[type^=image]').attr('href'), icon, 'favicon should match the provided value');                
+            });
+            
+            test('init() with tasks should create task meta tags', function() {
+                $('head').pinify({
+                    tasks: [
+                        {
+                            'name': 'Galleries',
+                            'action': '/Gallery',
+                            'icon': '/Content/Images/icon-gallery.ico'
+                        },
+                        {
+                            'name': 'Tags',
+                            'action': '/Tag',
+                            'icon': '/Content/Images/icon-tags.ico'
+                        },
+                        {
+                            'name': 'Account',
+                            'action': '/User',
+                            'icon': '/Content/Images/icon-account.ico'
+                        }
+                    ]
+                });
+                
+                equal($('head > meta[name=msapplication-task]:first').attr('content'), 'name=Galleries;action-uri=/Gallery;icon-uri=/Content/Images/icon-gallery.ico', 'msapplication-starturl should be the current page');
+                equal($('head > meta[name=msapplication-task]:eq(1)').attr('content'), 'name=Tags;action-uri=/Tag;icon-uri=/Content/Images/icon-tags.ico', 'msapplication-starturl should be the current page');
+                equal($('head > meta[name=msapplication-task]:last').attr('content'), 'name=Account;action-uri=/User;icon-uri=/Content/Images/icon-account.ico', 'msapplication-starturl should be the current page');
+            });
+            
+            //enablePinning Tests
+            test('enablePinning() on image with defaults should create pinnable item', function() {
+                $('#pinImg').pinify('enablePinning');
+                
+                equal($('#pinImg').attr('class'), 'msPinSite', 'image should contain msPinSite class');
+                equal($('#pinImg').attr('title'), 'Drag this image to your Windows 7 Taskbar to pin this site with IE9', 'image title should be default value');
+            });
+            
+            test('enablePinning() on div with defaults should create pinnable item', function() {
+                $('#pinDiv').pinify('enablePinning');
+                
+                equal($('#pinDiv').attr('class'), 'msPinSite', 'image should contain msPinSite class');
+                equal($('#pinDiv').attr('title'), 'Drag this image to your Windows 7 Taskbar to pin this site with IE9', 'image title should be default value');
+            });
+            
+            test('enablePinning() on image with title should create pinnable item with custom title', function() {
+                var altTitle = 'Pin THIS';
+                
+                $('#pinImg').pinify('enablePinning', altTitle);
+                
+                equal($('#pinImg').attr('class'), 'msPinSite', 'image should contain msPinSite class');
+                equal($('#pinImg').attr('title'), altTitle, 'image title should be default value');
+            });
+            
+            //enableSiteMode Tests
+            test('enableSiteMode() on default (click) event of link should bind click handler', function() {
+                $('#siteModeLink').pinify('enableSiteMode');
+                
+                if(!!$('#siteModeLink').data('events')) {
+                    ok($('#siteModeLink').data('events').click, 'link should be wired with click event');
+                    ok(!$('#siteModeLink').data('events').hover, 'link should not be wired with hover event');                
+                }
+            });
+            
+            test('enableSiteMode() on hover event of link should bind click handler', function() {
+                $('#siteModeLink').pinify('enableSiteMode', 'hover');
+                
+                if(!!$('#siteModeLink').data('events')) {
+                    ok($('#siteModeLink').data('events').hover, 'link should be wired with hover event');
+                    ok(!$('#siteModeLink').data('events').click, 'link should not be wired with click event');
+                }
+            });
+            
+            //pinTeaser Tests
+            test('pinTeaser() with defaults should set the favicon at the site root', function() {
+                $('#header').pinify('pinTeaser');
+            
+                equals($('#header > img.msPinSite').attr('src'), 'http://' + location.host + '/favicon.ico');                
+            });
+            
+            test('pinTeaser() with addStartLink set to false should not include a link in the generated markup', function() {
+               $('#header').pinify('pinTeaser', {
+                    addStartLink: false
+                });
+            
+                ok($('#linkAddSite').length == 0, 'link should not be included in generated markup');                
+            });
+            
+            test('pinTeaser() with options set should generate markup with options', function() {
+                var favicon = '/othericon.ico',
+                    pinTxt = 'Drag me to pin!',
+                    linkTxt = 'Click to add to start!',
+                    linkClr = '#0066cc',
+                    bgClr = 'transparent',
+                    txtClr = '#000000';
+            
+                $('#header').pinify('pinTeaser', {
+                    addStartLink: true,
+                    icon: favicon,
+                    pinText: pinTxt,
+                    linkText: linkTxt,
+                    style: {
+                        linkColor: linkClr,
+                        backgroundColor: bgClr,
+                        textColor: txtClr
+                    }
+                });
+            
+                ok($('.pinify-addSiteLink').length == 1, 'link should be included in generated markup');                
+                equals($('#header > img.msPinSite').attr('src'), '/othericon.ico'); 
+                equals($('#pinify-pinText').text(), pinTxt, 'pinText div should contain provided text');                 
+                equals($('.pinify-addSiteLink').text(), linkTxt, 'link text should contain the provided text');
+                
+                equals($('.pinify-addSiteLink').css('color'), linkClr, 'link color should match the provided value');
+                equals($('#header').css('background-color'), bgClr, 'background color should match the provided value');
+                equals($('#header').css('color'), txtClr, 'text color should match the provided value');
+            });
+                
+            //Utility function tests
+            test('isPinned() when site is not pinned should return false', function() {
+                equals($.pinify.isPinned(), false, 'isPinned should be false');
+            });        
+            
+            test('isPinned() when site is pinned should return true', function() {
+                windowMocks.mockMsIsSiteMode();
+                
+                equals($.pinify.isPinned(), true, 'isPinned should be true');                
+            });       
+            
+            test('firstRunState() with no parameters when site is not pinned should return 0', function() {
+                equals($.pinify.firstRunState(), 0, 'firstRunState should be 0 (not pinned)');
+            });
+            
+            test('firstRunState(true) when site is not pinned should return 0', function() {
+                equals($.pinify.firstRunState(true), 0, 'firstRunState should be 0 (not pinned)');
+            });
+            
+            test('firstRunState(false) when site is not pinned should return 0', function() {
+                equals($.pinify.firstRunState(false), 0, 'firstRunState should be 0 (not pinned)');
+            });            
+            
+            test('firstRunState() with no parameters when site is pinned should return 1', function() {
+                windowMocks.mockMsIsSiteModeFirstRun(1);
+                
+                equals($.pinify.firstRunState(), 1, 'firstRunState should be 1 (drag and drop pin)');
+            });
+            
+            test('firstRunState(true) when site is pinned should return 1', function() {
+                windowMocks.mockMsIsSiteModeFirstRun(1);
+                
+                equals($.pinify.firstRunState(true), 1, 'firstRunState should be 1 (drag and drop pin)');
+            });
+            
+            test('firstRunState(false) when site is pinned should return 1', function() {
+                windowMocks.mockMsIsSiteModeFirstRun(1);
+                
+                equals($.pinify.firstRunState(false), 1, 'firstRunState should be 1 (drag and drop pin)');
+            });
+            
+            //Add'l tests here now that mocking is working.
+        });
+        </script>
+</body>
+</html>

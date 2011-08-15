@@ -1,0 +1,236 @@
+﻿* {
+	margin: 0px; padding: 0px;
+}
+
+/* Font Family and Sizes */
+
+.ie9ify-teaser {
+	font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
+    font-size: 0.93em;
+}
+
+/* Shared */
+.ie9ify-closePin {
+	top: 5px; 
+    width: 18px; 
+    height: 18px; 
+    right: 5px; 
+    display: inline; 
+    position: absolute; 
+    cursor: pointer; 
+    background-image: url("../images/close.png");
+}
+.ie9ify-mainText {
+	padding-top: 6px; 
+    padding-left: 150px; 
+    font-size: 19px; 
+    vertical-align: middle; 
+    display: block;
+}
+.ie9ify-mainText a {
+	color: rgb(255, 255, 255);
+}
+
+/* Add Site Mode Link */
+.ie9ify-addSiteLnk {
+    text-decoration: none;    
+}
+
+/* Hanging Chad */
+.ie9ify-hanging-container {
+    padding: 5px;
+    width: 350px;
+    height: 20px;
+    position: fixed;
+    z-index: 100000;
+    top: 0px;
+    left: 80px;
+    border-radius: 0px 0px 10px 10px;
+}
+.ie9ify-hanging-content {
+    width: 280px;
+    height: 15px;
+    position: fixed;
+    top: 30px;
+    left: 80px;
+    padding: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px 10px 10px 10px;    
+}
+.ie9ify-hanging-container > img.msPinSite {
+    height: 20px;
+    width: 20px;
+    vertical-align: top;
+    float: left;
+    margin-right: 5px;
+}
+
+/* TopHat */
+.ie9ify-topHat-container {
+	width: 110%; 
+    height: 37px; 
+    text-align: center; 
+    color: rgb(0, 0, 0); 
+    font-family: "Arial"; 
+    font-size: 15px; 
+    font-weight: bold; 
+    margin-top: -8px; 
+    margin-left: -8px; 
+    vertical-align: middle; 
+    display: block; 
+    background-image: url("../images/toolbar-bg.png"); 
+    background-repeat: repeat-x;
+}
+.ie9ify-topHat-alignment {
+	width: 945px; 
+    padding-top: 8px; 
+    margin-right: auto; 
+    margin-left: auto; 
+    display: block;
+}
+.ie9ify-topHat-content {
+	height: 30px; 
+    margin-top: 5px; 
+    vertical-align: middle;
+}
+.ie9ify-topHat-content #ie9ify-topHat-logo {
+	margin-right: 5px; 
+    margin-left: 150px; 
+    float: left;
+}
+.ie9ify-topHat-content .ie9ify-topHat-text {
+	padding-top: 2px; 
+    vertical-align: middle; 
+    float: left;
+}
+#ie9ify-topHat-logo {
+	width: 20px; 
+    height: 20px;
+}
+
+/* Branded TopHat */
+.ie9ify-brandedTopHat-container {
+	top: 0px; 
+    width: 100%; 
+    height: 43px; 
+    text-align: left; 
+    color: rgb(255, 255, 255); 
+    font-family: "Segoe UI Light"; 
+    display: block; 
+    background-image: url("../images/bg_repeat_left.png"); 
+    background-repeat: repeat-x;
+}
+.ie9ify-brandedTopHat-content {
+	width: 953px; 
+    height: 43px; 
+    margin-right: auto; 
+    margin-left: auto; 
+    background-image: url("../images/branding_bar_custom_bg.png"); 
+    background-repeat: no-repeat;
+}
+.ie9ify-brandedTopHat-secondaryText {
+	width: 100px; 
+    text-align: left; 
+    font-size: 14px; 
+    margin-top: -30px; 
+    margin-right: 10px; 
+    float: right; 
+    display: inline;
+}
+#ie9ify-brandedTopHat-firstLogo {
+	left: 8px; 
+    top: 22px; 
+    width: 18px; 
+    height: 18px; 
+    float: left; 
+    display: inline; 
+    position: relative; 
+    cursor: pointer;
+}
+#ie9ify-brandedTopHat-secondLogo {
+	left: 64px; 
+    top: 25px; 
+    width: 12px; 
+    height: 12px; 
+    float: left; 
+    display: block; 
+    position: relative; 
+    cursor: pointer;
+}
+#ie9ify-brandedTopHat-thirdLogo {
+	top: 5px; 
+    width: 18px; 
+    height: 18px;
+    right: 133px; 
+    float: right; 
+    display: inline; 
+    position: relative; 
+    cursor: pointer;
+}
+
+/* Double TopHat */
+.ie9ify-doubleTopHat-container {
+	width: 100%; 
+    height: 100px; 
+    color: rgb(255, 255, 255); 
+    font-family: "Segoe UI Light"; 
+    display: block;
+}
+.ie9ify-doubleTopHat-left {
+	width: 50%; 
+    height: 100px; 
+    float: left; 
+    background-image: url("../images/bg_left.png"); 
+    background-repeat: repeat-x;
+}
+#ie9ify-doubleTopHat-leftBar {
+	width: 293px; 
+    height: inherit; 
+    float: right; 
+    background-image: url("../images/left_image.png"); 
+    background-repeat: no-repeat;
+}
+#ie9ify-doubleTopHat-logo {
+	left: 134px; 
+    top: 13px; 
+    width: 32px; 
+    height: 32px; 
+    display: inline; 
+    position: relative; 
+    cursor: pointer;
+}
+.ie9ify-doubleTopHat-right {
+	width: 50%; 
+    height: 100px; 
+    color: rgb(255, 255, 255); 
+    float: left; 
+    background-image: url("../images/bg_right.png"); 
+    background-repeat: repeat-x;
+}
+#ie9ify-doubleTopHat-rightBar {
+	width: 40px; 
+    height: inherit; 
+    float: left; 
+    background-image: url("../images/right_image.png"); 
+    background-repeat: no-repeat;
+}
+#ie9ify-doubleTopHat-rightBarMainContent {
+	width: 450px; 
+    display: block !important;
+}
+.ie9ify-doubleTopHat-lighterText {
+	color: rgb(140, 207, 240) !important;
+}
+#ie9ify-doubleTopHat-logo {
+	left: 134px; 
+    top: 13px; 
+    width: 32px; 
+    height: 32px; 
+    display: inline; 
+    position: relative; 
+    cursor: pointer;
+}
+.ie9ify-doubleTopHat-container .ie9ify-mainText {
+	padding-left: 0px;
+}
