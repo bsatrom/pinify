@@ -1,5 +1,6 @@
 # jQuery.pinify
 Contributors: Brandon Satrom, Clark Sell
+
 Tags: jquery, ie9, pinning
 
 A jQuery Plugin for adding Site Pinning features to your websites.
@@ -15,6 +16,7 @@ A jQuery Plugin for adding IE9 features (site pinning, site mode, etc.) to your 
 The purpose of the pinify jQuery plugin is to enable developers to safely leverage IE9 side mode features with simple commands and no need for additional browser checks. To view the full documentation, click here, or on the Documentation tab above. For more information about site pinning, and for a whirlwind walkthrough of pinify, check out Brandon Satrom's blog post "Applify Your Sites with Pinned Site and ie9ify, the IE9 jQuery Plugin."
 
 To install the pinify plugin, [use NuGet] (http://nuget.org/List/Packages/jQuery.ie9ify) or download the source directly from here or from [plugins.jquery.com] (http://plugins.jquery.com/project/pinify). 
+
 Note: NuGet package will be changed from jquery.ie9ify to jquery.pinify in the near future.
 
 To view a screencast covering ALL aspects of the pinify Plugin, [click here] (http://channel9.msdn.com/posts/ASPNET-MVC-With-Community-Tools-Part-7-ie9ify).
