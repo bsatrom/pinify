@@ -3,9 +3,9 @@
 <html>
     <head>
         <title>pinify Tests</title>
-        <link rel="stylesheet" href="css/qunit.css" />
-        <link rel="stylesheet" href="css/jquery.pinify.css" /> 
-        <script src="js/windowMocks.js"></script>
+        <link rel="stylesheet" href="../lib/qunit.css" type="text/css">        
+        <link rel="stylesheet" href="../css/jquery.pinify.css" type="text/css">
+        <script src="../lib/windowMocks.js"></script>        
     </head>
     <body>        
         <h1 id="qunit-header">pinify Tests</h1>
@@ -20,10 +20,9 @@
             <a id="siteModeLink" href="#">Click it here!</a>
         </div>    
         
-        <script src="js/jquery-1.6.min.js"></script>
-        <script src="js/jquery.pinify.js"></script>
-        <!--<script src="js/jquery.pinify.min.js"></script>-->    
-        <script src="js/qunit.js"></script>        
+        <script src="../lib/jquery-1.6.min.js"></script>
+        <script src="../lib/qunit.js"></script>        
+        <script src="../js/jquery.pinify.js"></script>
         <script>
         $(function() {
             // Setup and teardown
@@ -52,10 +51,14 @@
             test('init() with defaults should set default meta tag values in <head>', function() {
                 $('head').pinify();
                                 
-                equal($('head > meta[name=msapplication-starturl]').attr('content'), 'http://' + location.host, 'msapplication-starturl should be the current page');                
-                equal($('head > meta[name=msapplication-window]').attr('content'), 'width=800;height=600', 'msapplication-window should default to 800x600');
-                equal($('head > meta[name=application-name]').attr('content'), document.title.toString(), 'application-name meta tag should equal current document title');
-                equal($('head > meta[name=msapplication-tooltip]').attr('content'), document.title.toString(), 'msapplication-tooltip meta tag should equal current document title');                
+                equal($('head > meta[name=msapplication-starturl]').attr('content'), 
+                		'http://' + location.host, 'msapplication-starturl should be the current page');                
+                equal($('head > meta[name=msapplication-window]').attr('content'), 
+                		'width=800;height=600', 'msapplication-window should default to 800x600');
+                equal($('head > meta[name=application-name]').attr('content'), 
+                		document.title.toString(), 'application-name meta tag should equal current document title');
+                equal($('head > meta[name=msapplication-tooltip]').attr('content'), 
+                		document.title.toString(), 'msapplication-tooltip meta tag should equal current document title');                
             });
                         
             test('init() with defaults should strip the current file path from the link meta tag', function() {
@@ -81,12 +84,18 @@
                     window: win
                 });
                 
-                equal($('head > meta[name=msapplication-starturl]').attr('content'), start, 'msapplication-starturl should match the provided value');                
-                equal($('head > meta[name=msapplication-window]').attr('content'), win, 'msapplication-window should match the provided value');
-                equal($('head > meta[name=application-name]').attr('content'), appName, 'application-name meta tag should match the provided value');
-                equal($('head > meta[name=msapplication-tooltip]').attr('content'), ttip, 'msapplication-tooltip meta tag should match the provided value');                
-                equal($('head > meta[name=msapplication-navbutton-color]').attr('content'), color, 'msapplication-navbutton-color meta tag should match the provided value');
-                equal($('link[type^=image]').attr('href'), icon, 'favicon should match the provided value');                
+                equal($('head > meta[name=msapplication-starturl]').attr('content'), 
+                		start, 'msapplication-starturl should match the provided value');                
+                equal($('head > meta[name=msapplication-window]').attr('content'), 
+                		win, 'msapplication-window should match the provided value');
+                equal($('head > meta[name=application-name]').attr('content'), 
+                		appName, 'application-name meta tag should match the provided value');
+                equal($('head > meta[name=msapplication-tooltip]').attr('content'), 
+                		ttip, 'msapplication-tooltip meta tag should match the provided value');                
+                equal($('head > meta[name=msapplication-navbutton-color]').attr('content'), 
+                		color, 'msapplication-navbutton-color meta tag should match the provided value');
+                equal($('link[type^=image]').attr('href'), 
+                		icon, 'favicon should match the provided value');                
             });
             
             test('init() with tasks should create task meta tags', function() {
@@ -110,9 +119,15 @@
                     ]
                 });
                 
-                equal($('head > meta[name=msapplication-task]:first').attr('content'), 'name=Galleries;action-uri=/Gallery;icon-uri=/Content/Images/icon-gallery.ico', 'msapplication-starturl should be the current page');
-                equal($('head > meta[name=msapplication-task]:eq(1)').attr('content'), 'name=Tags;action-uri=/Tag;icon-uri=/Content/Images/icon-tags.ico', 'msapplication-starturl should be the current page');
-                equal($('head > meta[name=msapplication-task]:last').attr('content'), 'name=Account;action-uri=/User;icon-uri=/Content/Images/icon-account.ico', 'msapplication-starturl should be the current page');
+                equal($('head > meta[name=msapplication-task]:first').attr('content'), 
+                		'name=Galleries;action-uri=/Gallery;icon-uri=/Content/Images/icon-gallery.ico', 
+                		'msapplication-starturl should be the current page');
+                equal($('head > meta[name=msapplication-task]:eq(1)').attr('content'), 
+                		'name=Tags;action-uri=/Tag;icon-uri=/Content/Images/icon-tags.ico', 
+                		'msapplication-starturl should be the current page');
+                equal($('head > meta[name=msapplication-task]:last').attr('content'), 
+                		'name=Account;action-uri=/User;icon-uri=/Content/Images/icon-account.ico', 
+                		'msapplication-starturl should be the current page');
             });
             
             //enablePinning Tests
@@ -120,14 +135,18 @@
                 $('#pinImg').pinify('enablePinning');
                 
                 equal($('#pinImg').attr('class'), 'msPinSite', 'image should contain msPinSite class');
-                equal($('#pinImg').attr('title'), 'Drag this image to your Windows 7 Taskbar to pin this site with IE9', 'image title should be default value');
+                equal($('#pinImg').attr('title'), 
+                		'Drag this image to your Windows 7 Taskbar to pin this site with IE9', 
+                		'image title should be default value');
             });
             
             test('enablePinning() on div with defaults should create pinnable item', function() {
                 $('#pinDiv').pinify('enablePinning');
                 
                 equal($('#pinDiv').attr('class'), 'msPinSite', 'image should contain msPinSite class');
-                equal($('#pinDiv').attr('title'), 'Drag this image to your Windows 7 Taskbar to pin this site with IE9', 'image title should be default value');
+                equal($('#pinDiv').attr('title'), 
+                		'Drag this image to your Windows 7 Taskbar to pin this site with IE9', 
+                		'image title should be default value');
             });
             
             test('enablePinning() on image with title should create pinnable item with custom title', function() {
@@ -193,7 +212,7 @@
                     }
                 });
             
-                ok($('.pinify-addSiteLink').length == 1, 'link should be included in generated markup');                
+                ok($('.pinify-addSiteLink').length === 1, 'link should be included in generated markup');                
                 equals($('#header > img.msPinSite').attr('src'), '/othericon.ico'); 
                 equals($('#pinify-pinText').text(), pinTxt, 'pinText div should contain provided text');                 
                 equals($('.pinify-addSiteLink').text(), linkTxt, 'link text should contain the provided text');
@@ -201,6 +220,97 @@
                 equals($('.pinify-addSiteLink').css('color'), linkClr, 'link color should match the provided value');
                 equals($('#header').css('background-color'), bgClr, 'background color should match the provided value');
                 equals($('#header').css('color'), txtClr, 'text color should match the provided value');
+            });
+            
+            test('pinTeaser() with topHat option set should generate topHat teaser', function() {
+                var favicon = '/othericon.ico',
+                    pinTxt = 'Drag me to pin!',
+                    linkTxt = 'Click to add to start!',
+                    linkClr = '#0066cc',
+                    bgClr = 'transparent',
+                    txtClr = '#000000';
+            
+                $('#header').pinify('pinTeaser', {
+                    type: 'topHat',
+                	  icon: favicon,
+                    pinText: pinTxt,
+                    linkText: linkTxt,
+                    style: {
+                        linkColor: linkClr,
+                        backgroundColor: bgClr,
+                        textColor: txtClr
+                    }
+                });
+            
+                ok($('.msPinSite').length === 1, 'msPinSite should exist on one image on the page');                
+                ok($('.pinify-topHat-container').length === 1, 
+                		'topHat container should exist on the page');  
+                ok($('.pinify-topHat-content').length === 1, 
+                		'topHat content should exist on the page');  
+                ok($('#pinify-topHat-logo').length === 1, 
+                		'topHat logo should exist on one image on the page');                  
+            });
+            
+            test('pinTeaser() with brandedTopHat option set should generate brandedTopHat teaser', function() {
+                var favicon = '/othericon.ico',
+                    pinTxt = 'Drag me to pin!',
+                    linkTxt = 'Click to add to start!',
+                    linkClr = '#0066cc',
+                    bgClr = 'transparent',
+                    txtClr = '#000000';
+            
+                $('#header').pinify('pinTeaser', {
+                    type: 'brandedTopHat',
+                	  icon: favicon,
+                    pinText: pinTxt,
+                    linkText: linkTxt,
+                    style: {
+                        linkColor: linkClr,
+                        backgroundColor: bgClr,
+                        textColor: txtClr
+                    }
+                });
+            
+                ok($('.msPinSite').length === 2, 'msPinSite should exist on two images on the page');                
+                ok($('.pinify-brandedTopHat-container').length === 1, 
+                		'brandedTopHat container should exist on the page');  
+                ok($('.pinify-brandedTopHat-content').length === 1, 
+                		'brandedTopHat content should exist on the page');  
+                ok($('#pinify-brandedTopHat-firstLogo').length === 1, 
+                		'brandedTopHat logo should exist on one image on the page');  
+                ok($('#pinify-brandedTopHat-thirdLogo').length === 1, 
+                		'brandedTopHat logo should exist on one image on the page');                	
+            });
+            
+            test('pinTeaser() with doubleTopHat option set should generate doubleTopHat teaser', function() {
+                var favicon = '/othericon.ico',
+                    pinTxt = 'Drag me to pin!',
+                    linkTxt = 'Click to add to start!',
+                    linkClr = '#0066cc',
+                    bgClr = 'transparent',
+                    txtClr = '#000000';
+            
+                $('#header').pinify('pinTeaser', {
+                    type: 'doubleTopHat',
+                	  icon: favicon,
+                    pinText: pinTxt,
+                    linkText: linkTxt,
+                    style: {
+                        linkColor: linkClr,
+                        backgroundColor: bgClr,
+                        textColor: txtClr
+                    }
+                });
+            
+                ok($('.msPinSite').length === 1, 'msPinSite should on one image on the page');                
+                ok($('.pinify-doubleTopHat-container').length === 1, 
+                		'doubleTopHat container should exist on the page');  
+                ok($('#pinify-doubleTopHat-rightBarMainContent').length === 1, 
+                		'doubleTopHat main content should exist on the page');  
+                ok($('#pinify-doubleTopHat-logo').length === 1, 
+                		'doubleTopHat logo should exist on one image on the page');  
+                ok($('.pinify-doubleTopHat-lighterText').length === 1, 
+                		'doubleTopHat text should exist on one image on the page');                	
             });
                 
             //Utility function tests
@@ -244,7 +354,93 @@
                 equals($.pinify.firstRunState(false), 1, 'firstRunState should be 1 (drag and drop pin)');
             });
             
-            //Add'l tests here now that mocking is working.
+            test('addOverlay when site is pinned should set the icon and title as provided', function() {
+            	windowMocks.mockSetIconOverlay();
+            	
+            	$.pinify.addOverlay({
+            		title: 'Dummy title',
+            		icon: 'icon.jpg'
+            	})
+            	
+            	equals(window.external.overlayProperties.title, 'Dummy title', 'Title should match provided value');
+            	equals(window.external.overlayProperties.icon, 'icon.jpg', 'Icon should match provided value');
+            });
+            
+            test('clearOverlay does call msSiteModeClearIconOverlay', function() {
+            	windowMocks.mockClearIconOverlay();
+            	
+            	$.pinify.clearOverlay();
+            	
+            	ok(window.external.overlayProperties.clearWasCalled === true, "msSiteModeClearIconOverlay should be called");
+            });
+            
+            test('addJumpList when site is pinned should create jump list items', function() {
+            	windowMocks.mockAddJumpList();
+            	
+            	$.pinify.addJumpList({
+                  title: 'Test List',
+                  items: [
+                      {
+                          'name': 'CNN',
+                          'url': 'http://www.cnn.com',
+                          'icon': 'http://www.cnn.com/favicon.ico'
+                      },
+                      {
+                          'name': 'bit.ly',
+                          'url': 'http://bit.ly',
+                          'icon': 'http://www.bit.ly/favicon.ico'
+                      }
+                  ]
+              });
+            	
+            	equals(window.external.jumpListProperties.title, 'Test List', 'Title should match provided value');
+            	equals(window.external.jumpListProperties.items.length, 2, 'JumpList should have two items');
+            	equals(window.external.jumpListProperties.items[0].name, 
+            				'CNN', 'First jump list item name should match the provided value');
+            	ok(window.external.jumpListProperties.showWasCalled === true, "msSiteModeShowJumpList should be called");
+            });
+            
+            test('clearJumpList does call msSiteModeClearJumpList', function() {
+            	windowMocks.mockClearJumpList();
+            	
+            	$.pinify.clearJumpList();
+            	
+            	ok(window.external.jumpListProperties.clearWasCalled === true, "msSiteModeClearJumpList should be called");
+            });
+            
+            test('createThumbbarButtons creates buttons based on passed in value', function() {
+            	windowMocks.mockThumbbarButtons();
+            	
+            	$.pinify.createThumbbarButtons({
+                  buttons: [{
+                      icon: 'prev.ico',
+                      name: 'Previous Image',
+                      click: function () {
+                          console.log('previous...')
+                      }
+                  },
+                  {
+                      icon: 'play.ico',
+                      name: 'Play Slideshow',
+                      click: function () {
+                          console.loc('playing or paused...')
+                      },
+                      alternateStyle: {
+                          icon: 'pause.ico',
+                          name: 'Pause Slideshow'
+                      }
+                  }]
+              });
+              
+              equals(window.external.thumbbarProperties.buttons.length, 2, 'Two thumbbar buttons should exist in collection');
+              equals(window.external.thumbbarProperties.buttons[0].icon, 
+              			'prev.ico', 'Icon value should match provided value');
+              equals(window.external.thumbbarProperties.buttons[1].name, 
+              			'Play Slideshow', 'Button name should match provided value');
+              equals(window.external.thumbbarProperties.buttonStyles[0].icon, 
+              			'pause.ico', 'Icon value should match provided value');
+              ok(window.external.thumbbarProperties.showWasCalled === true, "msSiteModeShowThumbBar should be called");
+            });            
         });
         </script>
 </body>
