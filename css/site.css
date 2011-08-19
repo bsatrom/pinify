@@ -1,0 +1,111 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:regular,italic,bold|Droid+Sans+Mono|Love+Ya+Like+A+Sister);
+
+body {
+  margin-top: 1.0em;
+  background-color: #F8F8FF;
+  font-family: Ubuntu,Arial,sans;
+  font-size: 20px;
+  color: #555;
+}
+
+#container {
+	margin: 0 auto;
+  width: 700px;
+}
+h1 { 
+	font-size: 96px;
+	font-weight: 300; 
+	margin-bottom: 3px; 
+	font-family: 'Love Ya Like A Sister', cursive;
+}
+a { 
+	color: Grey; 
+	text-decoration: none;	
+}
+a:hover { 
+	text-decoration: underline 
+}
+a.license { 
+	display: inline-block; 
+	position: relative; 
+	top: -2px; 
+	margin: 0 20px 0 2px; 
+	width: 26px; 
+	height: 26px;  
+	font-size: 12px; 
+	font-weight: bold; 
+	color: #555; 
+	text-align: center;
+}
+a.license:before {
+    	content: ''; 
+    	width: 44px; 
+    	height: 26px; 
+    	position: absolute; 
+    	left: -3px;
+			top: -1px; 
+			border: 3px 
+			solid #555; 
+			-moz-border-radius: 32px; 
+			-webkit-border-radius: 32px; 
+			border-radius: 32px;
+}
+h2 { 
+	font-size: 30px; 
+	margin: 16px 0 0 0; 
+	padding: 0;  	
+}
+h3 { 
+	text-align: center; 	
+}
+.download { 
+	float: right; 
+}
+section h2 { 
+	font-size: 1.8em; 
+	margin-top: 1.8em; 
+	margin-bottom: .6em; 
+	color: #999; 
+}
+section p {
+	line-height:1.6em;	
+}
+section img.gravatar { 
+	float: left; 
+	margin: 8px 12px 20px 2px; 
+	padding: 2px; 
+	background-color: #DDD; 
+	border: 1px solid #BBB;
+}
+pre.git { 
+	background: black; 
+	color: white; 
+	padding: 15px; 
+	font-size: .9em;
+}
+span.code {
+		font-family: Consolas,Arial,sans;
+		font-size: 16px!important;
+		background-color: ghostWhite!important;
+		color: #444!important;
+		padding: 0 .2em!important;
+		border: 1px solid #DEDEDE!important;
+}
+pre { 
+	font-family: "Droid Sans Mono",Ubuntu,Arial,sans; 
+	font-size:.75em;
+  border: 0; 
+  margin: 1em 0 1em .3em; 
+  padding-left: .6em; 
+  border-left: 2px solid #DDD;
+}
+hr { 
+	border: 0; 
+	width: 80%; 
+	border-bottom: 1px solid #aaa
+}
+.footer { 
+	text-align:center; 
+	padding-top:30px; 
+	font-style: italic; 
+}

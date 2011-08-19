@@ -3,38 +3,17 @@
 <head>
   <meta charset='utf-8'>
 
-  <title>bsatrom/pinify @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #459cdc;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #ba6323; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #ba6323; }
-    h3 { text-align: center; color: #ba6323; }
-    a { color: #ba6323; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+  <title>bsatrom/Knockout.Unobtrusive @ GitHub</title>  
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono">    
+  <link rel="stylesheet" href="css/site.css" type="text/css">   
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script> 
+  <script src="js/jquery.pinify.min.js"></script>
 </head>
 
 <body>
-  <a href="http://github.com/bsatrom/pinify"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  <a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
 
   <div id="container">
-
     <div class="download">
       <a href="http://github.com/bsatrom/pinify/zipball/master">
         <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
@@ -42,18 +21,69 @@
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
 
-    <h1><a href="http://github.com/bsatrom/pinify">pinify</a>
-      <span class="small">by <a href="http://github.com/bsatrom">bsatrom</a></span></h1>
+		<header>
+    	<h1>
+  			<img src="images/Pin.png" alt="Pin" id="pin" />-ify
+    	</h1>
+    	<h2>:: The jQuery Site Pinning Plugin ::</h2>
+    </header>
+    
+    <section>
+    	<p>A jQuery Plugin for adding IE9 features (site pinning, site mode, etc.) to your websites. Several new features of Internet Explorer 9 are designed to enhance the browsing experience of consumers by enabling sites that leverage certain features to behave like applications on the desktop when those sites are "pinned" to the taskbar in Windows 7. A user pins a site by dragging the site's tab (or favicon in the address bar) to the taskbar. For all sites, IE9 will create a default experience (called "site mode") that will use information about the site to create an instance of the browser customized to look specific to that site. Developers can also add specific meta tags and script commands to extend these features to further customize user’s pinned experience of the site.</p>
 
-    <div class="description">
-      A jQuery Plugin for adding Browser Pinned Site Capabilities to Web Sites
-    </div>
+<p>The purpose of the pinify jQuery plugin is to enable developers to safely leverage IE9 side mode features with simple commands and no need for additional browser checks. To view the full documentation, click here, or on the Documentation tab above. For more information about site pinning, and for a whirlwind walkthrough of ie9ify, check out Brandon Satrom's blog post "<a href="http://www.userinexperience.com/post/Applify-Your-Sites-with-Pinned-Sites-and-ie9ify-the-IE9-jQuery-Plugin.aspx">Applify Your Sites with Pinned Sites and Pinify.</a>"</p>
 
-    <h2>Authors</h2>
-<p>Brandon Satrom (@Brandon Satrom | www.userinexperience.com), Clark Sell (@csell5 | www.csell.info)</p>
+<p>To install the pinify plugin, you can download the source from here or the <a href="http://plugins.jquery.com/project/pinify">plugin page</a> at plugins.jquery.com. Or, if you're installing from Visual Studio or WebMatrix, you can <a href="http://nuget.org/List/Packages/jQuery.ie9ify">use NuGet</a>.</p>
+
+<p>
+	To view a screencast covering ALL aspects of the Pinify Plugin, <a href="http://channel9.msdn.com/posts/ASPNET-MVC-With-Community-Tools-Part-7-ie9ify">click here</a>.
+</p>
+
+<!--<p>Try it live</p>-->
+    	
+<h2>Dependencies</h2>
+<ul>
+	<li><a href="http://jQuery.com">jQuery 1.5 or higher</a></li>	
+	<li><a href="http://ietestdrive.com">Internet Explorer 9 or higher</a></li>
+</ul>
+<h2>From Zero to Pinned in Five Minutes!</h2>
+<p>Getting started is simple. Just download <a href="http://jquery.com">jQuery</a> and <a href="http://github.com/bsatrom/pinify/zipball/master">this plugin</a> and include the following script references in your page.
+
+<pre>
+&lt;script src="jQuery1.6.2.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.pinify.js"&gt;&lt;/script&gt;
+</pre>
+
+<p>
+After you've added the pinify script to you page, you can start using pinify. The simplest way to use it is to put the following in a script block at the bottom of your page
+</p>
+
+<pre>
+ $('head').pinify();
+</pre>
+
+<p>which will add several &lt;meta&gt; tags to your markup. These tags let IE9 know that your page supports site pinning. Once you've done that, you need only drag the site favicon to your Windows 7 taskbar to get a customized, app-like experience for your website. This page is pinnable, so why not try it out forr yourself? Just drag and pin!</p>
+
+<!-- <h2>Check out the full Docs</h2>-->
+
+<!--<h2>See it Live!</h2>
+<p>You can see it live...</p>-->
+
 <h2>Contact</h2>
-<p>Brandon Satrom (brsatrom@microsoft.com)<br/>      </p>
 
+<p>
+			<img class="gravatar" src="http://www.gravatar.com/avatar/925d804db89a698c5e93b5f4c575d9a0.png?s=80" width="80" height="80">
+			<span>Brandon Satrom</span><br>
+			<a href="mailto:bsatrom@gmail.com">bsatrom@gmail.com</a><br>
+			<a target="_blank" href="http://twitter.com/brandonsatrom">@brandonsatrom</a>
+		</p>
+		
+		<p>
+			<img class="gravatar" src="http://1.gravatar.com/avatar/592fd4bb2692c7d9fbe8f5ef3af52309?s=80&d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D256&r=G" width="80" height="80">
+			<span>Clark Sell</span><br>
+			<a href="mailto:clark@csell.net">clark@csell.net</a><br>
+			<a target="_blank" href="http://twitter.com/CSell5">@csell5</a>
+		</p>
 
     <h2>Download</h2>
     <p>
@@ -63,15 +93,64 @@
     </p>
     <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
       by running:
-      <pre>$ git clone git://github.com/bsatrom/pinify</pre>
+      <pre class="git">$ git clone git://github.com/bsatrom/pinify</pre>
     </p>
 
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/bsatrom/pinify">bsatrom/pinify</a>
     </div>
-
+    
+    <div>
+		<h2>License</h2>    	
+		<p>
+			<a class="license" href="http://en.wikipedia.org/wiki/Apache_License" target="_blank">Apache</a>
+			Knockout.Unobtrusive is provided under the terms of the <br />
+			<a target="_blank" href="http://github.com/bsatrom/pinify/license.md">Apache 2.0 License</a>.
+		</p>
+    </div>
   </div>
 
-  
+	<script>
+		$(function() {
+			$('head').pinify({
+				applicationName: 'pinify : The jQuery Site Pinning Plugin',
+				startUrl: '/index.html',
+				tasks: [{
+						'name': 'The Blog Post',
+						'action': 'http://www.userinexperience.com/post/Applify-Your-Sites-with-Pinned-Sites-and-ie9ify-the-IE9-jQuery-Plugin.aspx',
+						'icon': 'http://www.userinexperience.com/favicon.ico'
+				  }, 
+					{
+						'name': 'The Screencast',
+						'action': 'http://channel9.msdn.com/posts/ASPNET-MVC-With-Community-Tools-Part-7-ie9ify',
+						'icon': 'http://channel9.msdn.com/styles/images/favicon.ico'
+					},
+					{
+						'name': 'Official jQuery Plugin Page',
+						'action': 'http://plugins.jquery.com/project/pinify',
+						'icon': 'http://jquery.com/favicon.ico'
+					},
+					{
+						'name': 'Pinify on NuGet',
+						'action': 'http://nuget.org/List/Packages/jQuery.ie9ify',
+						'icon': 'http://nuget.org/Themes/NuGetGallery/Content/Images/nuget.ico'
+				}]
+			});
+			
+			$('img#pin').pinify('enablePinning');
+		});
+	</script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-2061518-7']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
 </body>
 </html>
