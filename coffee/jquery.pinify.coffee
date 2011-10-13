@@ -90,7 +90,7 @@
         type: "hangingChad" #Options are: hangingChad, topHad, brandedTopHat and doubleTopHat
         icon: "http://#{location.host}/favicon.ico"
         pinText: "Drag this image to the taskbar to pin this site"
-        secondaryText: "Simply deag the icon or tab to the taskbar to pin."
+        secondaryText: "Simply drag the icon or tab to the taskbar to pin."
         addStartLink: false
         linkText: "Click here to add this site to the start menu"
         sticky: true
