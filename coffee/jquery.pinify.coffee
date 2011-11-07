@@ -1,5 +1,5 @@
 ###
-* jQuery pinify Plugin v1.2.5
+* jQuery pinify Plugin v1.3
 * http://ie9ify.codeplex.com
 *
 * Copyright 2011, Brandon Satrom and Clark Sell
@@ -363,7 +363,8 @@
     				alternateStyle: null
     				activeStyle: 0
     				click: null
-    			
+    				hidden: false
+    				
     			clickCurrent = (btn) ->
     				curr = buttons[btn.buttonID]
     				curr.click()
@@ -384,6 +385,7 @@
     				buttonStyle.button = btn
     				buttonStyle.alternateStyle = altBtn
     				buttonStyle.click = value.click
+    				buttonStyle.hidden = value.hidden or false
     				buttons[btn] = buttonStyle
     				
     				if document.addEventListener
@@ -394,11 +396,12 @@
     			
     			window.onunload = ->
     				for own key, value of buttons
-    					window.external.msSiteModeUpdateThumbBarButton buttons[key].button, true, false
+    					window.external.msSiteModeUpdateThumbBarButton value.button, true, false
     					
     			window.onload = ->
     				for own key, value of buttons
-    					window.external.msSiteModeUpdateThumbBarButtons buttons[key].button, true, true		
+    					if not value.hidden
+    						window.external.msSiteModeUpdateThumbBarButton value.button, true, true		
     			
     			window.external.msSiteModeShowThumbBar()
     	)
