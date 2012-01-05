@@ -150,6 +150,12 @@
               alt: 'Drag Me',
               'class': 'msPinSite'
             }).appendTo(contentDiv);
+             $('<img>', {
+              id: 'pinify-brandedTopHat-secondLogo',
+              src: options.icon,
+              alt: 'Drag Me',
+              'class': 'msPinSite'
+            }).appendTo(contentDiv);
             $('<img>', {
               id: 'pinify-brandedTopHat-thirdLogo',
               src: options.icon,
