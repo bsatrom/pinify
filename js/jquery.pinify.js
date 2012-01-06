@@ -44,6 +44,7 @@
           startUrl: "http://" + location.host,
           tooltip: document.title.toString(),
           window: "width=800;height=600",
+          target: "", /* options : self, tab, blank */
           tasks: []
         };
         options = $.extend({}, defaultOptions, options);
@@ -64,7 +65,7 @@
           createMetaTag('msapplication-navbutton-color', options.navColor, this);
           createMetaTag('msapplication-window', options.window, this);
           return $.each(taskList, function(key, value) {
-            return createMetaTag('msapplication-task', "name=" + value.name + ";action-uri=" + value.action + ";icon-uri=" + value.icon, head);
+            return createMetaTag('msapplication-task', "name=" + value.name + ";action-uri=" + value.action + ";icon-uri=" + value.icon + ";window-type=" + value.target, head);
           });
         });
       },
@@ -316,7 +317,7 @@
             window.external.msSiteModeCreateJumpList(options.title);
             items = options.items;
             $.each(items, function(key, value) {
-              return window.external.msSiteModeAddJumpListItem(value.name, value.url, value.icon);
+              return window.external.msSiteModeAddJumpListItem(value.name, value.url, value.icon, value.target);
             });
             return window.external.msSiteModeShowJumpList();
           }
