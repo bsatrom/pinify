@@ -98,7 +98,7 @@
         teaser = $(this);
         defaultOptions = {
           type: "hangingChad",
-          icon: "http://" + location.host + "/favicon.ico",
+          icon: document.location.pathname.slice(0,document.location.pathname.lastIndexOf('/')) + "/favicon.ico",
           pinText: "Drag this image to the taskbar to pin this site",
           secondaryText: "Simply drag the icon or tab to the taskbar to pin.",
           addStartLink: false,
