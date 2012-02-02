@@ -1,5 +1,4 @@
-(function() {
-  /*
+/*!
   * jQuery pinify Plugin v1.3
   * http://ie9ify.codeplex.com
   *
@@ -7,8 +6,9 @@
   * Licensed under an Apache Foundation License.
   * http://github.com/bsatrom/pinify
   *
-  * Date: Monday Nov 07 2011 12:44:28 -06
+  * Date: Thursday February 02 2012 12:44:28 -06
   */
+  (function() {
   var __hasProp = Object.prototype.hasOwnProperty;
   (function($) {
     var callWindowExternalSafely, createMetaTag, methods, siteModeSupported;
@@ -24,9 +24,11 @@
         content: content
       }).appendTo(head);
     };
+
     siteModeSupported = function() {
       return (!!window.external) && ("msIsSiteMode" in window.external);
     };
+    
     callWindowExternalSafely = function(func, returnValue) {
       try {
         return func();
@@ -34,6 +36,7 @@
         return returnValue;
       }
     };
+    
     methods = {
       init: function(options) {
         var defaultOptions;
@@ -251,6 +254,7 @@
         });
       }
     };
+    
     $.fn.pinify = function(method) {
       if (!siteModeSupported()) {
         return this;
