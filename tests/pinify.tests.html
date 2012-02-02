@@ -120,13 +120,13 @@
                 });
                 
                 equal($('head > meta[name=msapplication-task]:first').attr('content'), 
-                		'name=Galleries;action-uri=/Gallery;icon-uri=/Content/Images/icon-gallery.ico', 
+                		'name=Galleries;action-uri=/Gallery;icon-uri=/Content/Images/icon-gallery.ico;window-type=undefined', 
                 		'msapplication-starturl should be the current page');
                 equal($('head > meta[name=msapplication-task]:eq(1)').attr('content'), 
-                		'name=Tags;action-uri=/Tag;icon-uri=/Content/Images/icon-tags.ico', 
+                		'name=Tags;action-uri=/Tag;icon-uri=/Content/Images/icon-tags.ico;window-type=undefined', 
                 		'msapplication-starturl should be the current page');
                 equal($('head > meta[name=msapplication-task]:last').attr('content'), 
-                		'name=Account;action-uri=/User;icon-uri=/Content/Images/icon-account.ico', 
+                		'name=Account;action-uri=/User;icon-uri=/Content/Images/icon-account.ico;window-type=undefined', 
                 		'msapplication-starturl should be the current page');
             });
             
@@ -181,7 +181,7 @@
             test('pinTeaser() with defaults should set the favicon at the site root', function() {
                 $('#header').pinify('pinTeaser');
             
-                equals($('#header > img.msPinSite').attr('src'), 'http://' + location.host + '/favicon.ico');                
+                ok($('#header > img.msPinSite').attr('src').indexOf('favicon.ico') > 0);                
             });
             
             test('pinTeaser() with addStartLink set to false should not include a link in the generated markup', function() {
@@ -271,7 +271,7 @@
                     }
                 });
             
-                ok($('.msPinSite').length === 2, 'msPinSite should exist on two images on the page');                
+                ok($('.msPinSite').length === 3, 'msPinSite should exist on three images on the page');                
                 ok($('.pinify-brandedTopHat-container').length === 1, 
                 		'brandedTopHat container should exist on the page');  
                 ok($('.pinify-brandedTopHat-content').length === 1, 
