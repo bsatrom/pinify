@@ -57,7 +57,7 @@ For more information and additonal documentation, see the Wiki pages at this sit
 * Bumped to jQuery 1.7.1
 * Roll-up of previous patches, including:
 	- Issue #8 - dynamic path for icon (thanks, foxp2!)
-	- Issue *7 - fixed error type (thanks, foxp2!)
+	- Issue #7 - fixed error type (thanks, foxp2!)
 	- Issue #6 - Added window.target (thanks, foxp2!)
 	- Issue #4 - Second logo missing on brandedTopHat teaser (thanks, garjitech!)
 	- Issue #1 - Typo fix (thanks, nakajima!)
