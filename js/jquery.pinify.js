@@ -296,6 +296,7 @@
           return window.external.msIsSiteModeFirstRun(preserveState);
         }, 0);
       },
+      siteModeSupported: siteModeSupported
       isPinned: function() {
         if (!siteModeSupported()) {
           return false;
