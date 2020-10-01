@@ -23,7 +23,7 @@ To view a screencast covering ALL aspects of the pinify Plugin, [click here] (ht
 
 ## Installation
 
-This section describes how to install the plugin and get it working.
+This section describes how to install the plugin and get it working.And by installing it you can discover new feature and become a good coder.
 
 ### Vanilla Install
 
